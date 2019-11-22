@@ -1,3 +1,4 @@
+import creational.builder.Truck;
 import creational.factory.Vehicle;
 import creational.factory.VehicleFactory;
 import creational.singleton.EchoSingleton;
@@ -41,6 +42,15 @@ public class Main {
 		int tempC = wsAdapter.getTemperature();
 		es.echo("Temperature in F: " + t.getTemperature());
 		es.echo("Temperature in C: " + tempC);
+		es.echo("\n");
+		
+		// Builder
+		Truck truck = new Truck.Builder(1)
+				.setEngineOil(800)
+				.setCoolant(500)
+				.setDiesel(4000)
+				.build();
+		es.echo(truck.toString());
 	}
 
 }
