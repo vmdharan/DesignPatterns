@@ -1,6 +1,10 @@
 import creational.factory.Vehicle;
 import creational.factory.VehicleFactory;
 import creational.singleton.EchoSingleton;
+import structural.adapter.Temperature;
+import structural.adapter.TemperatureAdapter;
+import structural.adapter.TemperatureAdapterImpl;
+import structural.adapter.WeatherStation;
 
 public class Main {
 
@@ -28,7 +32,15 @@ public class Main {
 		Vehicle vf3 = vf.getVehicle(2);
 		vf3.getFuelEconomy();
 		es.echo("Large car: $" + vf3.calcularFuelCostPer100Km(fuelPrice));
+		es.echo("\n");
 		
+		// Adapter
+		int tempF = 97;
+		Temperature t = new WeatherStation(tempF);
+		TemperatureAdapter wsAdapter = new TemperatureAdapterImpl(t);
+		int tempC = wsAdapter.getTemperature();
+		es.echo("Temperature in F: " + t.getTemperature());
+		es.echo("Temperature in C: " + tempC);
 	}
 
 }
